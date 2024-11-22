@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.40, for Linux (x86_64)
 --
 -- Host: localhost    Database: polish_job_posts
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.40
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `currency`;
 CREATE TABLE `currency` (
   `Currency_id` int NOT NULL AUTO_INCREMENT,
   `Currency_Type` varchar(45) NOT NULL,
-  `exchange_rate` float DEFAULT NULL,
+  `exchange_rate` float NOT NULL,
   PRIMARY KEY (`Currency_id`),
   UNIQUE KEY `Currency_Type_UNIQUE` (`Currency_Type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3;
@@ -79,9 +79,9 @@ DROP TABLE IF EXISTS `job`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `job` (
   `Job_id` int NOT NULL AUTO_INCREMENT,
-  `Title` varchar(90) DEFAULT NULL,
-  `Experience_Level` varchar(45) DEFAULT NULL,
-  `Posting_Date` datetime DEFAULT NULL,
+  `Title` varchar(90) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Experience_Level` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Posting_Date` datetime NOT NULL,
   `Currency_id` int NOT NULL,
   `Workplace_Type_id` int NOT NULL,
   `Payment_id` int NOT NULL,
@@ -118,7 +118,7 @@ DROP TABLE IF EXISTS `location`;
 CREATE TABLE `location` (
   `Location_id` int NOT NULL AUTO_INCREMENT,
   `Country_code` varchar(2) NOT NULL,
-  `City` varchar(45) DEFAULT NULL,
+  `City` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`Location_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -158,9 +158,9 @@ DROP TABLE IF EXISTS `payment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment` (
   `Payment_id` int NOT NULL AUTO_INCREMENT,
-  `Salary_permanent` float DEFAULT NULL,
+  `Salary_permanent` float NOT NULL,
   `Permenant` varchar(10) NOT NULL,
-  `Salary_Topermanant` varchar(45) DEFAULT NULL,
+  `Salary_Topermanant` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`Payment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -216,8 +216,8 @@ DROP TABLE IF EXISTS `skills`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `skills` (
   `Skills_id` int NOT NULL AUTO_INCREMENT,
-  `Skill_Name` varchar(45) DEFAULT NULL,
-  `Skill_Value` int DEFAULT NULL,
+  `Skill_Name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Skill_Value` int NOT NULL,
   PRIMARY KEY (`Skills_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -384,4 +384,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-11 17:05:49
+-- Dump completed on 2024-11-21 21:00:43
